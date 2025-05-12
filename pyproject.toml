@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "robotic-fleet-intelligence-platform"
+version = "0.1.0"
+description = ""
+authors = ["IshemZ <ishem.zerzour@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pandas = "^2.2.3"
+numpy = "^2.2.5"
+scikit-learn = "^1.6.1"
+streamlit = "^1.45.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
