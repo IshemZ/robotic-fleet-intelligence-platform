@@ -766,6 +766,33 @@ carto = ["pydeck-carto"]
 jupyter = ["ipykernel (>=5.1.2)", "ipython (>=5.8.0)", "ipywidgets (>=7,<8)", "traitlets (>=4.3.2)"]
 
 [[package]]
+name = "pylance"
+version = "0.26.1"
+description = "python wrapper for Lance columnar format"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "pylance-0.26.1-cp39-abi3-macosx_10_15_x86_64.whl", hash = "sha256:d00de12bf03071ed5a02180f194377e21f42bc8b934cdf8381b22483523c3374"},
+    {file = "pylance-0.26.1-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:ea6f3172f6f655ff8070017054b827897cdaded5e9ddb5f8dcf4b4182526a6c0"},
+    {file = "pylance-0.26.1-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0df81f74cc3270083643ddb0ef31a150887923e5e50ab73016defc3026784eb6"},
+    {file = "pylance-0.26.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7bcc4f671f326a2faf021d1dce85f529601b842e0534aeb4e31019c69e99a730"},
+    {file = "pylance-0.26.1-cp39-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:dea757766b0444db2fb535e9fd730ef13ece966ce1e565aeac2aaeb31acc7523"},
+    {file = "pylance-0.26.1-cp39-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:d83fa9c98a4c0d2de97ae4dc30fab10097985f23368d119b5715d8ba558a8284"},
+    {file = "pylance-0.26.1-cp39-abi3-win_amd64.whl", hash = "sha256:14eb714431233a9f48421ff28b8b7d647d25e936caceccc2797b54d5999f6028"},
+]
+
+[package.dependencies]
+numpy = ">=1.22"
+pyarrow = ">=14"
+
+[package.extras]
+benchmarks = ["pytest-benchmark"]
+dev = ["pyright", "ruff (==0.4.1)"]
+ray = ["ray[data] (<2.38)"]
+tests = ["boto3", "datasets", "duckdb", "ml-dtypes", "pandas", "pillow", "polars[pandas,pyarrow]", "pytest", "tensorflow", "tqdm"]
+torch = ["torch"]
+
+[[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
 description = "Extensions to the standard Python datetime module"
@@ -778,6 +805,20 @@ files = [
 
 [package.dependencies]
 six = ">=1.5"
+
+[[package]]
+name = "python-dotenv"
+version = "1.1.0"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "python_dotenv-1.1.0-py3-none-any.whl", hash = "sha256:d7c01d9e2293916c18baf562d95698754b0dbbb5e74d457c45d4f6561fb9d55d"},
+    {file = "python_dotenv-1.1.0.tar.gz", hash = "sha256:41f90bc6f5f177fb41f53e87666db362025010eb28f60a01c9143bfa33a2b2d5"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
 
 [[package]]
 name = "pytz"
@@ -1067,6 +1108,26 @@ doc = ["intersphinx_registry", "jupyterlite-pyodide-kernel", "jupyterlite-sphinx
 test = ["Cython", "array-api-strict (>=2.0,<2.1.1)", "asv", "gmpy2", "hypothesis (>=6.30)", "meson", "mpmath", "ninja", "pooch", "pytest", "pytest-cov", "pytest-timeout", "pytest-xdist", "scikit-umfpack", "threadpoolctl"]
 
 [[package]]
+name = "setuptools"
+version = "80.4.0"
+description = "Easily download, build, install, upgrade, and uninstall Python packages"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "setuptools-80.4.0-py3-none-any.whl", hash = "sha256:6cdc8cb9a7d590b237dbe4493614a9b75d0559b888047c1f67d49ba50fc3edb2"},
+    {file = "setuptools-80.4.0.tar.gz", hash = "sha256:5a78f61820bc088c8e4add52932ae6b8cf423da2aff268c23f813cfbb13b4006"},
+]
+
+[package.extras]
+check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1)", "ruff (>=0.8.0)"]
+core = ["importlib_metadata (>=6)", "jaraco.functools (>=4)", "jaraco.text (>=3.7)", "more_itertools", "more_itertools (>=8.8)", "packaging (>=24.2)", "platformdirs (>=4.2.2)", "tomli (>=2.0.1)", "wheel (>=0.43.0)"]
+cover = ["pytest-cov"]
+doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier", "towncrier (<24.7)"]
+enabler = ["pytest-enabler (>=2.2)"]
+test = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.7.2)", "jaraco.test (>=5.5)", "packaging (>=24.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.*)", "pytest-home (>=0.5)", "pytest-perf", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel (>=0.44.0)"]
+type = ["importlib_metadata (>=7.0.2)", "jaraco.develop (>=7.21)", "mypy (==1.14.*)", "pytest-mypy"]
+
+[[package]]
 name = "six"
 version = "1.17.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -1263,4 +1324,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "4410394f55d9b314c8d386222c7d15bf6a32d6b19138ae8623d3197d483b0738"
+content-hash = "da4155c22872183d130346c2f3e785bbebabd38464e2c9d4d96c22acbeae4988"
