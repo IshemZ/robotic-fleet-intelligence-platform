@@ -26,38 +26,33 @@ map_data = df[['latitude',"longitude"]]
 
 #STREAMLIT INTERFACE 
 
-#SideBar
+#SideBar GLobal
 with st.sidebar:
     title = st.sidebar.title("Menu")
     Projet1 =st.sidebar.button("Page d'accueil", use_container_width=True, )
     Projet2 = st.sidebar.button("Map des avions", use_container_width=True)
-    
 
 #Onglet
 tab1, tab2 = st.tabs(["Onglet 1", "Onglet 2"])
-data = np.random.randn(10, 1)
 
-tab2.subheader("A tab with a chart")
-tab2.line_chart(data)
-
-tab2.subheader("A tab with the data")
-tab2.write(data)
+tab2.subheader("Line Chart")
+tab2.line_chart(map_data)
+tab2.subheader("Table brut")
+tab2.write(map_data)
 
 
 with tab1.container(border=True):
-    tab1.header("Robotic Fleet Intelligence Platform")
-    tab1.write("*créé par Ishem Zerzour*")
-    tab1.write("L’objectif principal est d’apprendre à concevoir, implémenter et déployer un pipeline de données complet, en partant de la collecte brute jusqu’à la mise à disposition pour les utilisateurs finaux. Ce projet a été pensé comme un exercice complet et évolutif qui intègre les grandes composantes d'un projet data")
+    st.header("Robotic Fleet Intelligence Platform")
+    st.write("*créé par Ishem Zerzour*")
+    st.write("L’objectif principal est d’apprendre à concevoir, implémenter et déployer un pipeline de données complet, en partant de la collecte brute jusqu’à la mise à disposition pour les utilisateurs finaux. Ce projet a été pensé comme un exercice complet et évolutif qui intègre les grandes composantes d'un projet data")
     
-    #tab1.divider()
+    col1, col2, col3 = st.columns(3, border=True, vertical_alignment='bottom')
     
-    col1, col2, col3 = tab1.columns(3, border=True, vertical_alignment='bottom')
-    #with col1:
     col1.link_button(label="Github Project Repository", url="https://github.com/IshemZ/robotic-fleet-intelligence-platform", type="primary")
-    #with col2:
     col2.link_button(label="LinkedIn", url="https://www.linkedin.com/in/ishem-zerzour/", type='primary')
-    #with col3:
     col3.link_button(label="Ajoute un lien", url="https://www.linkedin.com/in/ishem-zerzour/", type='primary')
+    
+tab1.divider()
 
 with tab1.container(border=True):
     st.subheader("Cartographie", divider=True)
