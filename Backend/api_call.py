@@ -41,8 +41,12 @@ columns = [
 
 df = pd.DataFrame(states, columns=columns)
 
-print(df.head())
 
+df_csv = df.copy()
+df_csv.to_csv("../robotic-fleet-intelligence-platform/Source/openskydata_raw.csv", sep=";", index=False)
+
+
+print(df.head())
 print(type(df))
 print(df.keys())
 
@@ -60,10 +64,6 @@ collection = db["fleet_intelligence"]
 
 df_json = df.to_dict(orient='records')
 
-results = collection.insert_many(df_json)
+#results = collection.insert_many(df_json)
 
-print(f"{len(results.inserted_ids)} documents insérés dans mongoDB !")
-
-
-
-
+#print(f"{len(results.inserted_ids)} documents insérés dans mongoDB !")
