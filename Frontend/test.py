@@ -4,96 +4,62 @@ import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
-
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
-
 load_dotenv()
-
 URI = os.getenv("URI_MONGODB")
 
 #Connexion MongoDB
 client = MongoClient(URI)
 db = client["opensky_data"]
 collection = db["fleet_intelligence"]
-
 #Récupération Data et converison dataframe
-#@st.cache
-
 data = list(collection.find({}))
 df = pd.DataFrame(data)
 df = df.drop(columns=["_id"])
 df['latitude'] = df['latitude'].astype(float)
 df['longitude'] = df['longitude'].astype(float)
 df = df[df['latitude'].notnull() & df['longitude'].notnull()]
+map_data = df[['latitude',"longitude"]]
 
-#STREAMLIT INTERFACE
 
-#Je vais maintenant construire l'interface utilisateur StreamLit pour présenter le #données OpenSky    
+#STREAMLIT INTERFACE 
 
 #SideBar
-st.sidebar.title("Menu")
-vue_global = st.sidebar.segmented_control(options=['Décollage','Atterissage'],label="Etat de l'avion", selection_mode='single')
+with st.sidebar:
+    title = st.sidebar.title("Menu")
+    Projet1 =st.sidebar.button("Page d'accueil", use_container_width=True, )
+    Projet2 = st.sidebar.button("Map des avions", use_container_width=True)
+    
 
-choix = st.sidebar.selectbox("choisi ton destin", ["Option 1","Option 2"])
+#Onglet
+tab1, tab2 = st.tabs(["Onglet 1", "Onglet 2"])
+data = np.random.randn(10, 1)
 
-Projet1 =st.sidebar.button("Projet 1", use_container_width=True, disabled=False, type="secondary")
-Projet2 = st.sidebar.button("Projet 2", key=3)
+tab2.subheader("A tab with a chart")
+tab2.line_chart(data)
 
-with st.container(border=True, height=60):
-    st.write('Inside')
-st.write('Outside')
-
-
-
-#Map
-map_data = df[['latitude',"longitude"]]
-st.map(map_data, use_container_width=True, color="#ffaa00")
-df
-x = st.slider('x')  # 👈 this is a widget
-st.write(x, 'squared is', x * x)
-
-#Header
-
-st.header('Mon Header')
-
-st.button('Mon bouton')
-
-st.write('Hello, *World!* :sunglasses:')
-
-st.write(1212)
-
-if st.button('Say Hello'): #bouton cliquable
-    st.write('why should i say that') #message en dessous lors du clique
-else:
-    st.write('goodbye')
-st.subheader('Mon tableau brut')
-
-st.write("Données OpenSky", df)
-st.text_input("Hello")
+tab2.subheader("A tab with the data")
+tab2.write(data)
 
 
+with tab1.container(border=True):
+    tab1.header("Robotic Fleet Intelligence Platform")
+    tab1.write("*créé par Ishem Zerzour*")
+    tab1.write("L’objectif principal est d’apprendre à concevoir, implémenter et déployer un pipeline de données complet, en partant de la collecte brute jusqu’à la mise à disposition pour les utilisateurs finaux. Ce projet a été pensé comme un exercice complet et évolutif qui intègre les grandes composantes d'un projet data")
+    
+    #tab1.divider()
+    
+    col1, col2, col3 = tab1.columns(3, border=True, vertical_alignment='bottom')
+    #with col1:
+    col1.link_button(label="Github Project Repository", url="https://github.com/IshemZ/robotic-fleet-intelligence-platform", type="primary")
+    #with col2:
+    col2.link_button(label="LinkedIn", url="https://www.linkedin.com/in/ishem-zerzour/", type='primary')
+    #with col3:
+    col3.link_button(label="Ajoute un lien", url="https://www.linkedin.com/in/ishem-zerzour/", type='primary')
 
-dfo = pd.DataFrame({
-    'first column': [1, 2, 3, 4],
-    'second column': [10, 20, 30, 40]
-    })
-
-option = st.selectbox(
-    'Which number do you like best?',
-    dfo['first column'])
-
-'You selected: ', option
-
-# Add a selectbox to the sidebar:
-add_selectbox = st.sidebar.selectbox(
-    'How would you like to be contacted?',
-    ('Email', 'Home phone', 'Mobile phone')
-)
-
-# Add a slider to the sidebar:
-add_slider = st.sidebar.slider(
-    'Select a range of values',
-    0.0, 100.0, (25.0, 75.0)
-)
+with tab1.container(border=True):
+    st.subheader("Cartographie", divider=True)
+    st.map(map_data, use_container_width=True, color="#ffaa00")
+    st.write("Données OpenSky", df)
