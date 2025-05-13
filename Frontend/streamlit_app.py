@@ -24,27 +24,86 @@ collection = db["fleet_intelligence"]
 data = list(collection.find({}))
 df = pd.DataFrame(data)
 df = df.drop(columns=["_id"])
+df['latitude'] = df['latitude'].astype(float)
+df['longitude'] = df['longitude'].astype(float)
+df = df[df['latitude'].notnull() & df['longitude'].notnull()]
 
-""" 
-STREAMLIT INTERFACE
+#STREAMLIT INTERFACE
 
-Je vais maintenant construire l'interface utilisateur StreamLit pour présenter le données OpenSky    
-"""
+#Je vais maintenant construire l'interface utilisateur StreamLit pour présenter le #données OpenSky    
 
+left_column, right_column = st.columns(2)
+# You can use a column just like st.sidebar:
+left_column.button('Press me!')
+
+# Or even better, call Streamlit functions inside a "with" block:
+with right_column:
+    chosen = st.radio(
+        'Sorting hat',
+        ("Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"))
+    st.write(f"You are in {chosen} house!")
 #SideBar
-add_sidebar = st.sidebar.radio('Accueil')
-add_sidebar
+st.sidebar.title("Menu")
+
+
+vue_global = st.sidebar.segmented_control(options=['Décollage','Atterissage'],label="Etat de l'avion", selection_mode='single')
+
+choix = st.sidebar.selectbox("choisi ton destin", ["Option 1","Option 2"])
+
+Projet1 =st.sidebar.button("Projet 1", use_container_width=True, disabled=False, type="secondary")
+Projet2 = st.sidebar.button("Projet 2", key=3)
+
+map_data = df[['latitude',"longitude"]]
+
+#map_data = pd.DataFrame(
+#    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+#    columns=['lat', 'lon'])
+
+st.map(map_data, use_container_width=True, color="#ffaa00")
+df
+x = st.slider('x')  # 👈 this is a widget
+st.write(x, 'squared is', x * x)
 
 #Header
-"""st.header('st.button')
 
-st.button('hello')
+st.header('Mon Header')
+
+st.button('Mon bouton')
+
+st.write('Hello, *World!* :sunglasses:')
+
+st.write(1212)
 
 if st.button('Say Hello'): #bouton cliquable
     st.write('why should i say that') #message en dessous lors du clique
 else:
     st.write('goodbye')
+st.subheader('Mon tableau brut')
 
 st.write("Données OpenSky", df)
-st.text_input("Hello")"""
+st.text_input("Hello")
 
+
+
+dfo = pd.DataFrame({
+    'first column': [1, 2, 3, 4],
+    'second column': [10, 20, 30, 40]
+    })
+
+option = st.selectbox(
+    'Which number do you like best?',
+    dfo['first column'])
+
+'You selected: ', option
+
+# Add a selectbox to the sidebar:
+add_selectbox = st.sidebar.selectbox(
+    'How would you like to be contacted?',
+    ('Email', 'Home phone', 'Mobile phone')
+)
+
+# Add a slider to the sidebar:
+add_slider = st.sidebar.slider(
+    'Select a range of values',
+    0.0, 100.0, (25.0, 75.0)
+)
