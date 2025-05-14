@@ -25,6 +25,7 @@ C'est à la fois un portfolio technique et un laboratoire d’apprentissage, pen
 
 ## Architecture du projet
 
+```bash
 ├── .gitignore
 ├── Archive
 │   └── test.py
@@ -46,6 +47,7 @@ C'est à la fois un portfolio technique et un laboratoire d’apprentissage, pen
 │   └── openskydata_raw.csv
 ├── poetry.lock
 └── pyproject.toml
+```
 
 ---
 

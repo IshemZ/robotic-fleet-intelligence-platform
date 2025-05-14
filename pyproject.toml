@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "robotic-fleet-intelligence-platform"
 version = "0.1.0"
-description = ""
+description = "Projet Trafic Aérien"
 authors = ["IshemZ <ishem.zerzour@gmail.com>"]
 readme = "README.md"
 
@@ -18,7 +18,6 @@ setuptools = "^80.4.0"
 pymongo = "^4.12.1"
 watchdog = "^6.0.0"
 plotly = "^6.0.1"
-
 
 [build-system]
 requires = ["poetry-core"]
