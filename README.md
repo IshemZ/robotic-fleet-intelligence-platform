@@ -58,7 +58,10 @@ C'est à la fois un portfolio technique et un laboratoire d’apprentissage, pen
 ## Sources de données
 
 - **API utilisée** : [OpenSky Network API](https://opensky-network.org/)
-- **Données récupérées** : `icao24`, `callsign`, `origin_country`, `latitude`, `longitude`, `altitude`, `velocity`, etc.
+- **Données récupérées** : `icao24`, `callsign`, `origin_country`, `time_position`, `last_contact`,
+       `longitude`, `latitude`, `baro_altitude`, `on_ground`, `velocity`,
+       `true_track`, `vertical_rate`, `sensors`, `geo_altitude`, `squawk`,
+       `spi`, `position_source`
 - **Zone géographique ciblée** : Munich, Allemagne
 
 ---
