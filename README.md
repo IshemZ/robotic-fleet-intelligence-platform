@@ -10,6 +10,7 @@ C'est à la fois un portfolio technique et un laboratoire d’apprentissage, pen
 
 - des techniques d’optimisation et de scaling en data et en developpement applicatifs.
 - des capacités d’analyse prédictive en lien avec les mouvements aériens ou autre (évolutif).
+
 ---
 
 ## Objectifs du projet (Evolutif)
@@ -94,6 +95,8 @@ poetry install
 poetry shell
 ```
 
+---
+
 ## Utilisation
 
 Lancer la collecte de données :
@@ -103,6 +106,8 @@ cd backend
 python fetch_opensky_data.py
 ```
 
+---
+
 ## Licence
 
-Ce projet est open-source sous licence MIT.
+Ce projet est open-source sous licence MIT
