@@ -33,12 +33,14 @@ C'est à la fois un portfolio technique et un laboratoire d’apprentissage, pen
 │   ├── description_data.ipynb
 │   └── exploratory_analysis.ipynb
 ├── Backend
+│   ├── __pycache__
+│   │   └── api_call.cpython-313.pyc
 │   ├── api_call.py
 │   └── playground-1.mongodb.js
 ├── Frontend
 │   ├── __pycache__
 │   │   └── streamlit.cpython-313.pyc
-│   └── streamlit.py
+│   └── streamlit_app.py
 ├── LICENCE.txt
 ├── README.md
 ├── Source
@@ -46,7 +48,9 @@ C'est à la fois un portfolio technique et un laboratoire d’apprentissage, pen
 │   ├── description_data.xlsx
 │   └── openskydata_raw.csv
 ├── poetry.lock
-└── pyproject.toml
+├── pyproject.toml
+└── test.py
+
 ```
 
 ---
