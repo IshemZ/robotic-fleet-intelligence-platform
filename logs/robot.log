@@ -1,0 +1,81 @@
+2025-05-17 17:27:06,655 - robotic-platform - DEBUG - DEBUG: infos très détaillées
+2025-05-17 17:27:06,655 - robotic-platform - INFO - INFO: tout va bien
+2025-05-17 17:27:06,655 - robotic-platform - WARNING - WARNING: attention à un truc
+2025-05-17 17:27:06,655 - robotic-platform - ERROR - ERROR: problème à gérer
+2025-05-17 17:27:06,655 - robotic-platform - CRITICAL - CRITICAL: système en danger
+2025-05-17 17:36:18,904 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 17:36:18,904 - robotic-platform - INFO - Fin du programme
+2025-05-17 17:39:40,471 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 17:39:40,472 - robotic-platform - INFO - Fin du programme
+2025-05-17 17:44:49,967 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 17:44:49,967 - robotic-platform - INFO - Fin du programme
+2025-05-17 17:52:06,419 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 17:52:06,420 - robotic-platform - INFO - Fin du programme
+2025-05-17 17:52:53,560 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 17:52:53,560 - robotic-platform - INFO - Fin du programme
+2025-05-17 17:54:52,608 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 17:54:52,611 - robotic-platform - INFO - Fin du programme
+2025-05-17 17:56:25,649 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 17:56:25,649 - robotic-platform - INFO - Fin du programme
+2025-05-17 18:00:54,391 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 18:00:54,391 - robotic-platform - INFO - Fin du programme
+2025-05-17 18:04:03,078 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 18:04:03,081 - robotic-platform - INFO - Fin du programme
+2025-05-17 18:07:19,023 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 18:07:19,024 - robotic-platform - INFO - Fin du programme
+2025-05-17 18:15:01,522 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 18:15:01,522 - robotic-platform - INFO - Fin du programme
+2025-05-17 18:16:24,688 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 18:16:24,689 - robotic-platform - INFO - Fin du programme
+2025-05-17 18:20:40,037 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 18:20:40,038 - robotic-platform - INFO - Fin du programme
+2025-05-17 18:28:15,674 - robotic-platform - INFO - Démarrage du robot
+2025-05-17 18:28:15,674 - robotic-platform - INFO - Fin du programme
+2025-05-17 18:28:42,613 - robotic-platform - DEBUG - Démarrage du robot
+2025-05-17 18:28:42,613 - robotic-platform - DEBUG - Fin du programme
+2025-05-17 18:29:33,908 - robotic-platform - DEBUG - Démarrage du robot
+2025-05-17 18:29:33,913 - robotic-platform - DEBUG - Fin du programme
+2025-05-17 18:35:31,355 - robotic-fleet - DEBUG - Démarrage du robot
+2025-05-17 18:35:31,356 - robotic-fleet - DEBUG - Fin du programme
+2025-05-17 18:39:37,504 - robotic-fleet - DEBUG - Démarrage du robot
+2025-05-17 18:39:37,504 - sensors.sensor - DEBUG - Température = 23.5°C
+2025-05-17 18:39:37,504 - sensors.sensor - INFO - Lecture de la température : OK
+2025-05-17 18:39:37,504 - sensors.sensor - WARNING - Température élevée !
+2025-05-17 18:39:37,504 - sensors.sensor - ERROR - Erreur de lecture de la température
+2025-05-17 18:39:37,504 - navigation.navig - INFO - Le robot avance
+2025-05-17 18:39:37,504 - navigation.navig - WARNING - Proximité d’un obstacle
+2025-05-17 18:39:37,504 - navigation.navig - ERROR - Erreur de mouvement
+2025-05-17 18:39:37,504 - navigation.navig - DEBUG - Détails du mouvement : vitesse 1 m/s, direction nord
+2025-05-17 18:39:37,504 - navigation.navig - CRITICAL - Erreur critique : le robot est bloqué
+2025-05-17 18:39:37,504 - robotic-fleet - DEBUG - Fin du programme
+2025-05-17 18:48:50,369 - robotic-fleet - DEBUG - Démarrage du robot
+2025-05-17 18:48:50,369 - sensors.sensor - WARNING - Température élevée !
+2025-05-17 18:48:50,369 - sensors.sensor - ERROR - Erreur de lecture de la température
+2025-05-17 18:48:50,369 - navigation.navig - CRITICAL - Erreur critique : le robot est bloqué
+2025-05-17 18:48:50,369 - robotic-fleet - DEBUG - Fin du programme
+2025-05-17 18:49:59,643 - robotic-fleet - DEBUG - Démarrage du robot
+2025-05-17 18:49:59,643 - navigation.navig - CRITICAL - Erreur critique : le robot est bloqué
+2025-05-17 18:49:59,643 - robotic-fleet - DEBUG - Fin du programme
+2025-05-17 18:55:59,334 - robotic-fleet-intelligence-platform - DEBUG - Démarrage du robot
+2025-05-17 18:55:59,334 - robotic-fleet-intelligence-platform - DEBUG - Fin du programme
+2025-05-17 18:58:59,474 - sensors.sensor - WARNING - Température élevée !
+2025-05-17 18:58:59,476 - sensors.sensor - ERROR - Erreur de lecture de la température
+2025-05-17 18:58:59,476 - navigation.navig - WARNING - Proximité d’un obstacle
+2025-05-17 18:58:59,476 - navigation.navig - ERROR - Erreur de mouvement
+2025-05-17 18:58:59,476 - navigation.navig - CRITICAL - Erreur critique : le robot est bloqué
+2025-05-17 19:05:36,424 - robotic-fleet-intelligence-platform - DEBUG - Démarrage du robot
+2025-05-17 19:05:36,425 - robotic-fleet-intelligence-platform - DEBUG - Fin du programme
+2025-05-17 19:07:53,061 - robotic-fleet-intelligence-platform - DEBUG - Démarrage du robot
+2025-05-17 19:07:53,062 - robotic-fleet-intelligence-platform - DEBUG - Fin du programme
+2025-05-17 19:13:24,360 - robotic_fleet - DEBUG - Démarrage du robot
+2025-05-17 19:13:24,362 - robotic_fleet - DEBUG - Fin du programme
+2025-05-17 19:14:54,995 - robotic_fleet - DEBUG - Démarrage du robot
+2025-05-17 19:14:54,995 - robotic_fleet - DEBUG - Fin du programme
+2025-05-17 19:16:48,467 - robotic_fleet-intelligence-platform - DEBUG - Démarrage du robot
+2025-05-17 19:16:48,467 - robotic_fleet-intelligence-platform - DEBUG - Fin du programme
+2025-05-17 19:37:29,761 - robotic_platform - INFO - Démarrage du robot
+2025-05-17 19:37:29,762 - robotic_platform - INFO - Fin du programme
+2025-05-17 19:42:26,510 - robotic_platform - INFO - Démarrage du robot
+2025-05-17 19:42:26,511 - robotic_platform - INFO - Fin du programme
+2025-05-17 19:43:05,147 - robotic_platform - INFO - Démarrage du robot
+2025-05-17 19:43:05,149 - robotic_platform - INFO - Fin du programme

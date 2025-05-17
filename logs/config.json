@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "default": {
+            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "default",
+            "stream": "ext://sys.stdout"
+        },
+        "file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "DEBUG",
+            "filename": "logs/robot.log",
+            "formatter": "default",
+            "maxBytes": 10000,
+            "backupCount": 5
+        }
+    },
+    "loggers": {
+        "__main__": {
+            "level": "DEBUG",
+            "handlers": ["console", "file"]
+        }
+    }
+}
