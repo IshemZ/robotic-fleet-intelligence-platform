@@ -19,6 +19,11 @@ pymongo = "^4.12.1"
 watchdog = "^6.0.0"
 plotly = "^6.0.1"
 
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+flake8 = "^7.2.0"
+pre-commit = "^4.2.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
