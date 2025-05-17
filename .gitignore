@@ -2,3 +2,6 @@ READMEbrouillon.md
 .venv
 .env
 .streamlit/
+.flake8
+__pycache__
+Archive
