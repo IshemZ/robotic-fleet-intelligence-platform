@@ -1,16 +1,15 @@
 import requests
-
-# import json
 import pandas as pd
+from dotenv import load_dotenv
+# import os
 
 # from datetime import datetime
 # from pymongo import MongoClient
-from dotenv import load_dotenv
-import os
+# import json
 
 load_dotenv()
 
-URI = os.getenv("URI_MONGODB")
+# URI = os.getenv("URI_MONGODB")
 
 # OpenSky API base url
 url = "https://opensky-network.org/api/states/all"
