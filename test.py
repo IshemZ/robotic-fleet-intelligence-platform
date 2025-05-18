@@ -157,20 +157,20 @@ with tab3.container(border=True):
     col2.metric("Pays impliqués", df["origin_country"].nunique())
     col3.metric("Alt. moyenne (m)", f"{df['baro_altitude'].mean():,.0f}")
 
-    st.subheader("✈️ Top compagnies par volume de vols")
+    st.subheader("Top compagnies par volume de vols")
     top_compagnies = df["callsign"].dropna().str.slice(0, 3).value_counts().head(20)
     st.bar_chart(top_compagnies)
 
-    st.subheader("🌍 Répartition des vols par pays")
+    st.subheader("Répartition des vols par pays")
     top_pays = df["origin_country"].value_counts().head(20)
     st.bar_chart(top_pays)
 
-    st.subheader("📏 Distribution des altitudes (vols en cours)")
+    st.subheader("Distribution des altitudes (vols en cours)")
 
     st.bar_chart(df["baro_altitude"].dropna())
 
 with tab4.container(border=True):
-    st.title("🔍 Recherche de vol")
+    st.title("Recherche de vol")
 
     st.markdown(
         "Utilise les filtres ci-dessous pour rechercher un vol dans les données actuelles."
@@ -185,19 +185,19 @@ with tab4.container(border=True):
     df["origin_country"] = df["origin_country"].fillna("Inconnu")
 
     # --- Filtres de recherche ---
-    with st.expander("🔧 Filtres de recherche", expanded=True):
+    with st.expander("Filtres de recherche", expanded=True):
         col1, col2 = st.columns(2)
 
         with col1:
-            callsign_input = st.text_input("🔠 Callsign (ex: AFR123)").upper()
+            callsign_input = st.text_input("Callsign (ex: AFR123)").upper()
             pays_input = st.selectbox(
-                "🌍 Pays d'origine",
+                "Pays d'origine",
                 ["Tous"] + sorted(df["origin_country"].unique().tolist()),
             )
 
         with col2:
-            only_in_air = st.checkbox("✈️ Vols en cours (non au sol)", value=True)
-            altitude_min = st.slider("🛬 Altitude minimale (m)", 0, 13000, 0)
+            only_in_air = st.checkbox("Vols en cours (non au sol)", value=True)
+            altitude_min = st.slider("Altitude minimale (m)", 0, 13000, 0)
 
     # --- Application des filtres ---
     filtered_df = df.copy()
@@ -214,7 +214,7 @@ with tab4.container(border=True):
     filtered_df = filtered_df[filtered_df["baro_altitude"].fillna(0) >= altitude_min]
 
     # --- Résultats ---
-    st.subheader(f"🔎 Résultats : {len(filtered_df)} vol(s) trouvé(s)")
+    st.subheader(f" Résultats : {len(filtered_df)} vol(s) trouvé(s)")
     st.dataframe(
         filtered_df[
             [
@@ -268,7 +268,7 @@ with tab5.container(border=True):
         return degrees(lat2), degrees(lon2)
 
     def show_simulation_prevision(df):
-        st.title("🛰️ Simulation & Prévision de Vol")
+        st.title("Simulation & Prévision de Vol")
 
         st.markdown(
             "Sélectionne un avion pour simuler sa position dans les prochaines minutes."
@@ -284,7 +284,7 @@ with tab5.container(border=True):
             return
 
         selected_callsign = st.selectbox(
-            "✈️ Sélectionner un vol (callsign)", vol_options
+            "Sélectionner un vol (callsign)", vol_options
         )
 
         selected_row = df[df["callsign"] == selected_callsign].iloc[0]
@@ -294,7 +294,7 @@ with tab5.container(border=True):
         st.markdown(f"**Vitesse :** {int(selected_row['velocity'] or 0)} m/s")
         st.markdown(f"**Direction (°) :** {int(selected_row['true_track'] or 0)}")
 
-        minutes = st.slider("⏱️ Temps de projection (minutes)", 1, 30, 10)
+        minutes = st.slider("Temps de projection (minutes)", 1, 30, 10)
 
         lat_start, lon_start = selected_row["latitude"], selected_row["longitude"]
         velocity = selected_row["velocity"]
@@ -304,7 +304,7 @@ with tab5.container(border=True):
             lat_start, lon_start, velocity, track, minutes
         )
 
-        st.subheader("📍 Position simulée")
+        st.subheader("Position simulée")
         st.markdown(f"Après **{minutes} minutes**, la position estimée serait :")
         st.code(f"Latitude : {lat_end:.4f} | Longitude : {lon_end:.4f}")
 
@@ -315,7 +315,7 @@ with tab5.container(border=True):
             )
         )
 
-        with st.expander("🧮 Données brutes utilisées"):
+        with st.expander("Données brutes utilisées"):
             st.json(
                 {
                     "icao24": selected_row["icao24"],
@@ -333,9 +333,9 @@ with tab5.container(border=True):
     show_simulation_prevision(filtered_df)  # remplace df_flights par ton DataFrame réel
 
 with tab6.container(border=True):
-    st.title("📊 Bilan & Perspectives")
+    st.title("Bilan & Perspectives")
 
-    st.subheader("✅ Ce que j'ai appris")
+    st.subheader("Ce que j'ai appris")
     st.markdown(
         """
     - Intégration d'une API en temps réel (OpenSky) pour la récupération des vols en cours.
@@ -346,7 +346,7 @@ with tab6.container(border=True):
     """
     )
 
-    st.subheader("⚠️ Limites actuelles")
+    st.subheader("Limites actuelles")
     st.markdown(
         """
     - Les données de l’API OpenSky sont limitées à certaines régions (notamment en dehors de l’Europe).
@@ -356,7 +356,7 @@ with tab6.container(border=True):
     """
     )
 
-    st.subheader("🚀 Améliorations futures")
+    st.subheader("Améliorations futures")
     st.markdown(
         """
     - Ajout d'un système de **cache ou base de données** pour stocker l'historique des vols.
