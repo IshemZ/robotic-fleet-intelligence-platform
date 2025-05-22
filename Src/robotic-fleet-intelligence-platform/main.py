@@ -159,10 +159,10 @@ df["longitude"] = df["longitude"].astype(float)
 # STREAMLIT INTERFACE
 
 with st.sidebar:
-    st.title("🔍 Filtre des données")
+    st.title("Filtre des données")
 
     pays_input = st.selectbox(
-        "🌍 Pays d'origine",
+        "Pays d'origine",
         ["Tous"] + sorted(df["origin_country"].unique().tolist()),
         key="pays_input",
     )
