@@ -188,7 +188,7 @@ with st.sidebar:
         "OpenSky Network API",
         url="https://opensky-network.org/",
         type="primary",
-        use_container_width=True,
+        use_container_width=True, 
     )
 
     # --- Informations complémentaires ou contact
