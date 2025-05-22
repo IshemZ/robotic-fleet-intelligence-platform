@@ -1,7 +1,7 @@
 READMEbrouillon.md
 .venv
 .env
-.streamlit/
+.streamlit/secrets.toml
 .flake8
 __pycache__
 Archive
