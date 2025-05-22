@@ -1,11 +1,14 @@
 import streamlit as st
+import folium
+from streamlit_folium import st_folium
 import pandas as pd
 import numpy as np
 from math import radians, degrees
-# from Backend.api_call import get_flight_data
+from Backend.api_call import get_flight_data
 # from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
+from folium.plugins import MarkerCluster
 
 load_dotenv()
 URI = os.getenv("URI_MONGODB")
@@ -36,17 +39,17 @@ st.set_page_config(
 # df['latitude'] = df['latitude'].astype(float)
 # df['longitude'] = df['longitude'].astype(float)
 
-# df = get_flight_data()
-# df = pd.DataFrame(df)
-df = pd.read_csv("Source/openskydata_raw.csv", sep=";")
+df = get_flight_data()
+df = pd.DataFrame(df)
+# df = pd.read_csv("Source/openskydata_raw.csv", sep=";")
 df = df[df["latitude"].notnull() & df["longitude"].notnull()]
 df["origin_country"] = df["origin_country"].fillna("Inconnu")
-df["latitude"] = df["latitude"].astype(float)
+df["latitude"] = df["latitude"].astype(float) 
 df["longitude"] = df["longitude"].astype(float)
 
 # STREAMLIT INTERFACE
 
-# SideBar GLobal
+# SideBar GLobal 
 with st.sidebar:
     title = st.sidebar.title("Filtre des données")
     pays_input = st.sidebar.selectbox(
@@ -114,40 +117,80 @@ with tab1.container(border=True):
         type="primary",
         use_container_width=True,
     )
-    col3.link_button(
-        label="Ajoute un lien",
-        url="https://www.linkedin.com/in/ishem-zerzour/",
-        type="primary",
-        use_container_width=True,
-    )
+    # col3.link_button(
+    #    label="Envoyer un message",
+    #    url="mailto:zerzourishem@gmail.com",
+    #    type="primary",
+    #    use_container_width=True,
+    # )
+    col3.markdown("""
+    <a href="mailto:zerzourishem@gmail.com?subject=Demande%20de%20contact&body=Bonjour Ishem,%20je%20souhaite%20échanger%20avec%20vous."
+    style="
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding: 8px 80px;
+        font-size: 16px;
+        color: white;
+        background-color: #284EA0;
+        text-decoration: none;
+        border-radius: 8px;
+    ">
+        Me contacter par mail
+    </a>
+""", unsafe_allow_html=True,)
 
-# st.dataframe(filtrage, use_container_width=True)
+# --- AJOUT EN BAS DE PAGE ---
+# Ajoute un espace ou une ligne de séparation si tu veux aérer
+st.markdown("---")
+
+# Pied de page ou contenu additionnel
+st.markdown(
+    "<p style='text-align: center; font-size: 14px; color: grey;'>© 2025 - Projet développé par Ishem Zerzour.</p>",
+    unsafe_allow_html=True
+)
+
+# Tu peux aussi ajouter une image, ou un logo en bas
+# st.image("mon_logo.png", width=100)
+
+# Ou encore un message de mise à jour
+st.info("Dernière mise à jour : Mai 2025 - Version 1.0.0")
+
+# Ou une boîte de feedback
+if st.button("Laisser un feedback "):
+    st.toast("Merci pour votre retour (fonctionnalitée à venir)")
 
 with tab2.container(border=False):
     # st.subheader("Etat du traffic aérien mondial (en temps réel)", divider="gray")
 
     col4, col5 = st.columns([0.7, 0.3], border=True, vertical_alignment="top")
     if not filtered_df.empty:
-        col4.map(filtered_df[["latitude", "longitude"]].dropna())
+        col4.map(filtered_df[["latitude", "longitude"]].dropna(), )
         # col4.map(
         #    filtered_df,
         use_container_width = (True,)
-        color = ("#ffaa00",)
+        color = ("#E69B06",)
         latitude = (filtered_df["latitude"],)
         longitude = (filtered_df["longitude"],)
 
     st.dataframe(data=filtered_df)
 
-    # col5.subheader("KPI")
-    # col5.write(filtered_df)
-    col5.subheader("Volume de Vols selon le pays d'origine")
+    col5.subheader("KPI")
     volume_vols = filtered_df.shape[0]
-    col5.metric(label="Nombre de vols", value=f"{volume_vols:,}")
-    col5.metric(label="Nombre de vols", value=f"{volume_vols:,}")
-    col5.metric(label="Nombre de vols", value=f"{volume_vols:,}")
-    col5.metric(label="Nombre de vols", value=f"{volume_vols:,}")
+    nb_pays = filtered_df["origin_country"].nunique()
+    altitude_moy = filtered_df["baro_altitude"].mean()
+    vitesse_moy = filtered_df["velocity"].mean()
+    nb_au_sol = filtered_df["on_ground"].sum()
+    nb_en_air = volume_vols - nb_au_sol
 
-with tab3.container(border=True):
+    # col5.metric(label="Nombre de vols total", value=f"{volume_vols:,}")
+    col5.metric(label="Vols en l’air", value=f"{nb_en_air:,}")
+    col5.metric(label="Vols au sol", value=f"{nb_au_sol:,}")
+    col5.metric(label="Pays représentés", value=f"{nb_pays:,}")
+    col5.metric(label="Altitude moyenne (m)", value=f"{altitude_moy:,.0f} m")
+    col5.metric(label="Vitesse moyenne (m/s)", value=f"{vitesse_moy:,.0f} m/s")
+
+with tab3.container(border=False):
     st.title("Statistiques et Tendances")
 
     col1, col2, col3 = st.columns(3)
@@ -167,7 +210,7 @@ with tab3.container(border=True):
 
     st.bar_chart(df["baro_altitude"].dropna())
 
-with tab4.container(border=True):
+with tab4.container(border=False):
     st.title("Recherche de vol")
 
     st.markdown(
@@ -175,7 +218,7 @@ with tab4.container(border=True):
     )
 
     # Vérification que le DataFrame est non vide
-    if df.empty:
+    if df.empty: 
         st.warning("Aucune donnée de vol disponible actuellement.")
 
     # Nettoyage et prétraitement
@@ -243,7 +286,7 @@ with tab4.container(border=True):
     if not filtered_df.empty:
         st.map(filtered_df[["latitude", "longitude"]].dropna())
 
-with tab5.container(border=True):
+with tab5.container(border=False):
 
     def simulate_position(lat, lon, velocity, track_deg, minutes):
         R = 6371e3  # Rayon de la Terre en mètres
@@ -264,13 +307,20 @@ with tab5.container(border=True):
         )
 
         return degrees(lat2), degrees(lon2)
+    
+    st.title("Simulation & Prévision de Vol")
 
-    def show_simulation_prevision(df):
-        st.title("Simulation & Prévision de Vol")
-
-        st.markdown(
-            "Sélectionne un avion pour simuler sa position dans les prochaines minutes."
+    st.markdown(
+            "Sélectionnez un avion pour simuler sa position dans les prochaines minutes.")
+    st.markdown(
+            "Cette simulation est basée sur la vitesse et la direction actuelles du vol.")
+    st.markdown(
+            "Note : Les données de l'API OpenSky sont mises à jour toutes les 10 secondes, "
+            "donc la simulation peut ne pas être précise à long terme."
         )
+    col8, col9 = st.columns(2, border=True)
+    
+    def show_simulation_prevision(df):
 
         df = df[df["on_ground"] == False].dropna(
             subset=["callsign", "latitude", "longitude", "velocity", "true_track"]
@@ -281,18 +331,18 @@ with tab5.container(border=True):
             st.warning("Aucun vol actif disponible pour la simulation.")
             return
 
-        selected_callsign = st.selectbox(
+        selected_callsign = col8.selectbox(
             "Sélectionner un vol (callsign)", vol_options
         )
 
         selected_row = df[df["callsign"] == selected_callsign].iloc[0]
 
-        st.markdown(f"**Pays :** {selected_row['origin_country']}")
-        st.markdown(f"**Altitude :** {int(selected_row['baro_altitude'] or 0)} m")
-        st.markdown(f"**Vitesse :** {int(selected_row['velocity'] or 0)} m/s")
-        st.markdown(f"**Direction (°) :** {int(selected_row['true_track'] or 0)}")
+        col9.markdown(f"**Pays :** {selected_row['origin_country']}")
+        col9.markdown(f"**Altitude :** {int(selected_row['baro_altitude'] or 0)} m")
+        col9.markdown(f"**Vitesse :** {int(selected_row['velocity'] or 0)} m/s")
+        col9.markdown(f"**Direction (°) :** {int(selected_row['true_track'] or 0)}")
 
-        minutes = st.slider("Temps de projection (minutes)", 1, 30, 10)
+        minutes = col8.slider("Temps de projection (minutes)", 1, 30, 10)
 
         lat_start, lon_start = selected_row["latitude"], selected_row["longitude"]
         velocity = selected_row["velocity"]
@@ -325,7 +375,7 @@ with tab5.container(border=True):
                     "true_track (°)": track,
                     "altitude (m)": selected_row["baro_altitude"],
                 }
-            )
+            )  
 
     # Appel de la fonction dans le container
     show_simulation_prevision(filtered_df)  # remplace df_flights par ton DataFrame réel

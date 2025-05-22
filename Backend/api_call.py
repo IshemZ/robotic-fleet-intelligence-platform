@@ -1,6 +1,5 @@
-import requests
-from requests import get
 import pandas as pd
+import requests
 from dotenv import load_dotenv
 from datetime import datetime
 from pymongo import MongoClient
@@ -30,7 +29,10 @@ def fetchFlightData():
 
 opensky_data = fetchFlightData()
 
-states = opensky_data.get("states", [])
+if opensky_data is not None:
+    states = opensky_data.get("states", [])
+else:
+    states = []
 
 # Liste des colonnes selon la doc OpenSky
 columns = [
