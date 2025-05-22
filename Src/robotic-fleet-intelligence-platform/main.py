@@ -158,24 +158,42 @@ df["longitude"] = df["longitude"].astype(float)
 
 # STREAMLIT INTERFACE
 
-# SideBar GLobal 
 with st.sidebar:
-    title = st.sidebar.title("Filtre des données")
-    pays_input = st.sidebar.selectbox(
-        "Pays d'origine",
+    st.title("🔍 Filtre des données")
+
+    # --- Filtres
+    pays_input = st.selectbox(
+        "🌍 Pays d'origine",
         ["Tous"] + sorted(df["origin_country"].unique().tolist()),
-        key=2,
+        key="pays_input",
     )
 
+    # Exemple d'autres filtres que tu peux ajouter :
+    altitude_min = st.slider("Altitude minimale (m)", 0, int(df["baro_altitude"].max()), 0)
+    vitesse_min = st.slider("Vitesse minimale (km/h)", 0, 1000, 0)
+
+    # --- Application des filtres
     filtered_df = df.copy()
     if pays_input != "Tous":
         filtered_df = filtered_df[filtered_df["origin_country"] == pays_input]
-    source = st.sidebar.link_button(
+    filtered_df = filtered_df[
+        (filtered_df["baro_altitude"] >= altitude_min) &
+        (filtered_df["velocity"] >= vitesse_min)
+    ]
+
+    # --- Lien vers la source
+    st.divider()
+    st.markdown("**Données provenant de :**")
+    st.link_button(
         "OpenSky Network API",
         url="https://opensky-network.org/",
         type="primary",
         use_container_width=True,
     )
+
+    # --- Informations complémentaires ou contact
+    st.markdown("---")
+    st.markdown("📬 **Contact développeur :** [ishem.zerzour@gmail.com](mailto:ishem.zerzour@gmail.com)")
 
 # filtrage = df[df["origin_country"] == country_origin]
 
