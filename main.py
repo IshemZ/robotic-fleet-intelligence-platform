@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from math import radians, degrees
+import pandas as pd
+import requests
+from datetime import datetime
+import json
 # from Backend.api_call import get_flight_data
 # from pymongo import MongoClient
 # from dotenv import load_dotenv
@@ -22,17 +26,17 @@ st.set_page_config(
         "About": "# This is a header. This is an *extremely* cool app!",
     },
 )
-import pandas as pd
-import requests
-from dotenv import load_dotenv
-from datetime import datetime
-from pymongo import MongoClient
-import json
-import os
-import streamlit as st
-load_dotenv()
+# import pandas as pd
+# import requests
+# from dotenv import load_dotenv
+# from datetime import datetime
+# from pymongo import MongoClient
+# import json
+# import os
+# import streamlit as st
+# load_dotenv()
 
-URI = os.getenv("URI_MONGODB")
+# URI = os.getenv("URI_MONGODB")
 
 # OpenSky API base url
 url = "https://opensky-network.org/api/states/all"
