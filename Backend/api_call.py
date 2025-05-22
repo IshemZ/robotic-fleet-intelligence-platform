@@ -5,7 +5,7 @@ from datetime import datetime
 from pymongo import MongoClient
 import json
 import os
-
+import streamlit as st
 load_dotenv()
 
 URI = os.getenv("URI_MONGODB")
@@ -13,7 +13,7 @@ URI = os.getenv("URI_MONGODB")
 # OpenSky API base url
 url = "https://opensky-network.org/api/states/all"
 
-
+@st.cache_data(ttl=60)
 def fetchFlightData():
     try:
         response = requests.get(url)
