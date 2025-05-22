@@ -4,6 +4,8 @@ version = "0.1.0"
 description = "Projet Trafic Aérien"
 authors = ["IshemZ <ishem.zerzour@gmail.com>"]
 readme = "README.md"
+package-mode = false
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.13"
