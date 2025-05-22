@@ -2,12 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from math import radians, degrees
-
+# from Backend.api_call import get_flight_data
 # from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
-
-# from Backend.api_call import get_flight_data
 
 load_dotenv()
 URI = os.getenv("URI_MONGODB")
@@ -52,7 +50,7 @@ df["longitude"] = df["longitude"].astype(float)
 with st.sidebar:
     title = st.sidebar.title("Filtre des données")
     pays_input = st.sidebar.selectbox(
-        "🌍 Pays d'origine",
+        "Pays d'origine",
         ["Tous"] + sorted(df["origin_country"].unique().tolist()),
         key=2,
     )

@@ -5,3 +5,5 @@ READMEbrouillon.md
 .flake8
 __pycache__
 Archive
+Backend/__pycache__
+*__pycache__*

@@ -1,15 +1,15 @@
 import requests
+from requests import get
 import pandas as pd
 from dotenv import load_dotenv
-# import os
-
-# from datetime import datetime
-# from pymongo import MongoClient
-# import json
+from datetime import datetime
+from pymongo import MongoClient
+import json
+import os
 
 load_dotenv()
 
-# URI = os.getenv("URI_MONGODB")
+URI = os.getenv("URI_MONGODB")
 
 # OpenSky API base url
 url = "https://opensky-network.org/api/states/all"
@@ -89,7 +89,7 @@ df["on_ground"] = df["on_ground"].astype(bool)
 df["spi"] = df["spi"].astype(bool)
 df["last_contact"] = pd.to_datetime(df["last_contact"], unit="s", errors="coerce")
 df["time_position"] = pd.to_datetime(df["time_position"], unit="s", errors="coerce")
-df
+df.head()
 
 # Extract CSV pour échantillons
 df_csv = df.copy()
