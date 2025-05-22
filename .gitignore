@@ -1,9 +1,0 @@
-READMEbrouillon.md
-.venv
-.env
-.streamlit/secrets.toml
-.flake8
-__pycache__
-Archive
-Backend/__pycache__
-*__pycache__*
