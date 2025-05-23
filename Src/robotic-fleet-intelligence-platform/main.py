@@ -273,19 +273,20 @@ with tab1.container(border=True):
     unsafe_allow_html=True
     )
 
-    st.markdown("### ")  # petit espace
+    st.markdown("### ")
+    from PIL import Image
     image = Image.open("photo.jpg")
     st.image(
         image,
         use_column_width=True,
-        caption="Vue aérienne illustrative",
+        caption="Vue aérienne",
     )
 
-st.info("Dernière mise à jour : Mai 2025 - Version 1.0.0")
+    st.info("Dernière mise à jour : Mai 2025 - Version 1.0.0")
 
 
-if st.button("Laisser un feedback "):
-    st.toast("Merci pour votre retour (fonctionnalitée à venir)")
+    if st.button("Laisser un feedback "):
+        st.toast("Merci pour votre retour (fonctionnalitée à venir)")
 
 with tab2.container(border=False):
     # st.subheader("Etat du traffic aérien mondial (en temps réel)", divider="gray")
