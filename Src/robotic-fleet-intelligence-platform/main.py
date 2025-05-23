@@ -263,30 +263,29 @@ with tab1.container(border=True):
 """, unsafe_allow_html=True,)
 
 
+    tab1.markdown("### ")
+    from PIL import Image
+    image = Image.open("photo.jpg")
+    tab1.image(
+        image,
+        caption="Vue aérienne",
+    
+    )
 
 
-    st.markdown("---")
+    tab1.markdown("---")
 
 
-    st.markdown(
+    tab1.markdown(
     "<p style='text-align: center; font-size: 14px; color: grey;'>© 2025 - Projet développé par Ishem Zerzour.</p>",
     unsafe_allow_html=True
     )
 
-    st.markdown("### ")
-    from PIL import Image
-    image = Image.open("photo.jpg")
-    st.image(
-        image,
-        use_column_width=True,
-        caption="Vue aérienne",
-    )
-
-    st.info("Dernière mise à jour : Mai 2025 - Version 1.0.0")
+    tab1.info("Dernière mise à jour : Mai 2025 - Version 1.0.0")
 
 
-    if st.button("Laisser un feedback "):
-        st.toast("Merci pour votre retour (fonctionnalitée à venir)")
+    if tab1.button("Laisser un feedback "):
+        tab1.toast("Merci pour votre retour (fonctionnalitée à venir)")
 
 with tab2.container(border=False):
     # st.subheader("Etat du traffic aérien mondial (en temps réel)", divider="gray")
