@@ -265,27 +265,25 @@ with tab1.container(border=True):
 
 
 
-st.markdown("---")
+    st.markdown("---")
 
 
-st.markdown(
+    st.markdown(
     "<p style='text-align: center; font-size: 14px; color: grey;'>© 2025 - Projet développé par Ishem Zerzour.</p>",
     unsafe_allow_html=True
-)
+    )
 
-st.markdown("### ")  # petit espace
-image = Image.open("photo.jpg")
-st.image(
-    image,
-    use_column_width=True,
-    caption="Vue aérienne illustrative",
-)
+    st.markdown("### ")  # petit espace
+    image = Image.open("photo.jpg")
+    st.image(
+        image,
+        use_column_width=True,
+        caption="Vue aérienne illustrative",
+    )
 
-
-# Ou encore un message de mise à jour
 st.info("Dernière mise à jour : Mai 2025 - Version 1.0.0")
 
-# Ou une boîte de feedback
+
 if st.button("Laisser un feedback "):
     st.toast("Merci pour votre retour (fonctionnalitée à venir)")
 
