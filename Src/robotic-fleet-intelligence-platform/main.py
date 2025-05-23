@@ -262,25 +262,16 @@ with tab1.container(border=True):
     </a>
 """, unsafe_allow_html=True,)
 
-# --- AJOUT EN BAS DE PAGE ---
-# Ajoute un espace ou une ligne de séparation si tu veux aérer
+
+
+
 st.markdown("---")
 
-# Pied de page ou contenu additionnel
+
 st.markdown(
     "<p style='text-align: center; font-size: 14px; color: grey;'>© 2025 - Projet développé par Ishem Zerzour.</p>",
     unsafe_allow_html=True
 )
-
-# Tu peux aussi ajouter une image, ou un logo en bas
-# st.image("mon_logo.png", width=100)
-
-# Ou encore un message de mise à jour
-st.info("Dernière mise à jour : Mai 2025 - Version 1.0.0")
-
-# Ou une boîte de feedback
-if st.button("Laisser un feedback "):
-    st.toast("Merci pour votre retour (fonctionnalitée à venir)")
 
 st.markdown("### ")  # petit espace
 image = Image.open("photo.jpg")
@@ -289,6 +280,14 @@ st.image(
     use_column_width=True,
     caption="Vue aérienne illustrative",
 )
+
+
+# Ou encore un message de mise à jour
+st.info("Dernière mise à jour : Mai 2025 - Version 1.0.0")
+
+# Ou une boîte de feedback
+if st.button("Laisser un feedback "):
+    st.toast("Merci pour votre retour (fonctionnalitée à venir)")
 
 with tab2.container(border=False):
     # st.subheader("Etat du traffic aérien mondial (en temps réel)", divider="gray")
