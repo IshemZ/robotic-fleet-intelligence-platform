@@ -42,7 +42,7 @@ st.set_page_config(
 # OpenSky API base url
 url = "https://opensky-network.org/api/states/all"
 
-@st.cache_data(ttl=60)
+@st.cache_data(ttl=3600)
 def fetchFlightData():
     try:
         response = requests.get(url)
