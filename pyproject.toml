@@ -22,7 +22,7 @@ watchdog = "^6.0.0"
 plotly = "^6.0.1"
 pydeck = "^0.9.1"
 ruff = "^0.11.10"
-uv = "^0.7.6"
+uv = "^0.9.5"
 folium = "^0.19.6"
 streamlit-folium = "^0.25.0"
 
